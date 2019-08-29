@@ -1,3 +1,9 @@
+/*
+Codigo Desenvolvido por: 
+Colgate(https://github.com/Colgate13);//Sensors and base of code.
+Cadu();//Servants and System of hardware.
+Matheus(Mephisto);//Debugger and AUX_create.
+*/
 #include <Ultrasonic.h>
 #include <Servo.h>
 #define fita_1 980 //refletancia da linha preta
