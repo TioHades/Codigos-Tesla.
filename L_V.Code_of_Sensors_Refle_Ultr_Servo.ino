@@ -1,6 +1,6 @@
 /*
-Robotic Masons ©2019. in IFTO - Institudo Federal de ciencias e tecnologia do tocantins - Campus Gurupi.
-Code by:
+Robotic Masons ©2019. project in extension - IFTO - Institudo Federal de ciencias e tecnologia do tocantins - Campus Gurupi.(dicentes)
+Code by:Robotic Masons ©2019
 Colgate(https://github.com/Colgate13);//Sensors and base of code.
 Cadu();//Servants and System of hardware.
 Matheus(Mephisto);//Debugger and AUX_create.
