@@ -10,9 +10,9 @@ digitalWrite(controlar, LOW);//Liberação de energia do rele. digitalWrite faz 
 void loop() {
   // put your main code here, to run repeatedly:
 digitalWrite(controlar, LOW);;//Liberação de energia do rele. digitalWrite faz ligar = HIGH OU Desligar = LOW.
-delay(1000);//Atrassa o codigo 1000ms
-digitalWrite(controlar, HIGH);//Interrupção da energia, Tudo que estiver saindo do rele, não vai funcionar.
-delay(1000);//Atrassa o codigo 1000ms
+//delay(1000);//Atrassa o codigo 1000ms
+//digitalWrite(controlar, HIGH);//Interrupção da energia, Tudo que estiver saindo do rele, não vai funcionar.
+//delay(1000);//Atrassa o codigo 1000ms
 }
 /*
 Pinagem:
