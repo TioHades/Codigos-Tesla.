@@ -1,3 +1,13 @@
+/*
+Robotic Masons ©2019. project in extension - IFTO - Institudo Federal de ciencias e tecnologia do tocantins - Campus Gurupi.(dicentes).
+Code by:Robotic Masons ©2019 - Co - Colgate, Gabriel Colgate.
+Colgate(https://github.com/Colgate13);//SoftWare Enginner, Sensors, Motors and base of code.
+Cadu();//Servants and System of hardware.
+Matheus(Mephisto);//Debugger and AUX_create.
+*/
+
+
+
 //Biblioteca necessarias.{
 #include <Ultrasonic.h>
 #include <Servo.h>
@@ -151,3 +161,4 @@ outPut
 SW1 = LADO POSITIVO//da bateria
 OUTRO Negativo//do objeto a ser ligado
 */
+//Robotic Masons ©2019. project in extension - IFTO - Institudo Federal de ciencias e tecnologia do tocantins - Campus Gurupi.(dicentes)
