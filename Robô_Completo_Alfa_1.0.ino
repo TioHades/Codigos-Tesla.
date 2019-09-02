@@ -34,9 +34,11 @@ Servo myservo;//Variavel do tipo Servo.
 
 
 //Pinagem
+//Ultrasonico TRIG 12 ECHO 13
+//Servo Porta 6.
 int controlar = 7;//Porta 7. Modulo de Rele Solido SSR.
 //O rele e um interruptor de energia, quando ele esta LOW a energia passa, quando ele esta HIGH a energia e cortada
-int pinoSensor = A5;//Sensor de Refletancia;
+int pinoSensor = A5;//Porta A5. Sensor de Refletancia;
 int led_1 = 7;//Led 1. Porta 7.
 int led_2 = 4;//Led 2. Porta 4.
 //
