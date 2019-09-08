@@ -1,27 +1,35 @@
-int controlar = 7;//Porta de saida do Arduino
-//O rele e um interruptor de energia, quando ele esta LOW a energia passa, quando ele esta HIGH a energia e cortada
+#include <Servo.h>// BIBLIOTECA DO SERVO..........................................................................
+
+int Motor = 7;//Porta de saida do Arduino
+int Motor2 = 8;//Porta de saida do Arduino
+
+const int _Servo = 6;
+Servo s;
+int posi;
+
 
 void setup() {
-  // put your setup code here, to run once:
-pinMode(controlar, OUTPUT);//Inicialização da porta, como Saida = OUTPUT
-digitalWrite(controlar, LOW);//Liberação de energia do rele. digitalWrite faz ligar = HIGH OU Desligar = LOW.
+s.attach(_Servo);
+s.write(0);
+pinMode(Motor, OUTPUT);
+pinMode(Motor2, OUTPUT);//Inicialização da porta, como Saida = OUTPUT
+
+  
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-digitalWrite(controlar, LOW);;//Liberação de energia do rele. digitalWrite faz ligar = HIGH OU Desligar = LOW.
-//delay(1000);//Atrassa o codigo 1000ms
-//digitalWrite(controlar, HIGH);//Interrupção da energia, Tudo que estiver saindo do rele, não vai funcionar.
-//delay(1000);//Atrassa o codigo 1000ms
+  
+digitalWrite(Motor, HIGH);
+digitalWrite(Motor2, HIGH);
+
+  for(posi = 0; posi < 180; posi++){ //PARA "pos" IGUAL A 0, ENQUANTO "pos" MENOR QUE 180, INCREMENTA "pos"
+    s.write(posi); //ESCREVE O VALOR DA POSIÇÃO QUE O SERVO DEVE GIRAR
+    delay(15); //INTERVALO DE 15 MILISSEGUNDOS
+  }
+  delay(1000); //INTERVALO DE 1 SEGUNDO
+  for(posi = 180; posi >= 0; posi--){ //PARA "pos" IGUAL A 180, ENQUANTO "pos" MAIOR OU IGUAL QUE 0, DECREMENTA "pos"
+    s.write(posi); //ESCREVE O VALOR DA POSIÇÃO QUE O SERVO DEVE GIRAR
+    delay(15); //INTERVALO DE 15 MILISSEGUNDOS
+  }
+
 }
-/*
-Pinagem:
-//Lado que tem tres lugares
-– CH1: Sinal Relé 1
-– DC+: 5V
-– DC-: GND 
-//Lado que tem dois lugares
-outPut 
-SW1 = LADO POSITIVO//da bateria
-OUTRO Negativo//do objeto a ser ligado
-*/
