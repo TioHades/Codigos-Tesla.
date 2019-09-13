@@ -165,10 +165,12 @@ void loop(){
    relays.SetRelay(2, SERIAL_RELAY_ON, 1);   // Vai abrir a porta do Rele para a energia passar.
  }
   }
-   while(Objetivo == 2){//Se o robor sentir a fita prata passar para o objetivo 2.
+
+  
+}
+     while(Objetivo == 2){//Se o robor sentir a fita prata passar para o objetivo 2.
     //MODO RESGATE, 
     
  }
   
 }
-
