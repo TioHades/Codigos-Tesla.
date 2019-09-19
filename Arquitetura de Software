@@ -20,7 +20,7 @@ obejetivos de vida, o robô vai ter dois objetivos de vida.
 */
 
 /*
-Função para Pegar refletancia No Objetivo 1.
+Função para Pegar refletancia No Objetivo 1.//Seguir a linha
 *
 void SensorRefletancia()
 {
@@ -31,10 +31,30 @@ Serial.println(Variavel_receptoro_do_sensor_refle);
 */
 
 /*
-Função para indentificar obstaculos, Sensor Ultrassonico.
+Função para indentificar obstaculos, Sensor Ultrassonico.//Indentificar os obstaculos
 void Ultrasonico() {
 Variavel_receptoro_do_sensor_Ultra = ultrassom.Ranging(CM);
   Serial.print(Variavel_receptoro_do_sensor_Ultra); //imprime o valor da variável distancia
   Serial.println(" cm");
 }
 */
+//-----------------------------------------------------------------------------
+//Segundo objetivo de vida - Resgatar Bolas brancas
+
+/*
+Sensor ultrassonico para achar as Esferas.
+
+
+*/
+/*
+Sensores de refletancia na aba para indentificar bolas
+
+se ele endentificar as bolas, a ab
+*/
+
+
+
+
+
+
+
