@@ -1,31 +1,31 @@
 #include <Ultrasonic.h>
 
-#define fita 980
-#define Branco 970
+#define fita 800
 
-int IN1 = 4;
-int IN2 = 5;//ESQUERDA
-int velocidadeA = 11;
 
-int IN3 = 6;
-int IN4 = 7;//DIREITA
-int velocidadeB = 10;
+const int motorA = 11; //velocidade motor A - de 0 a 255
+const int motorB = 10; //velocidade motor B - de 0 a 255
+
+const int dir1A = 4; //direcao do motor A - HIGH ou LOW
+const int dir2A = 5; //direcao do motor A - HIGH ou LOW
+
+const int dir1B = 6; //direcao do motor B - HIGH ou LOW,
+const int dir2B = 7; //direcao do motor B - HIGH ou LOW
+
+
 
 Ultrasonic ultrassom(3, 2);//Varievel do tipo, Ultrassonico.
 
-int Sensor_1 = A0;// direita
-int Sensor_2 = A1; //  esquerda
-int Sensor_3 = A2; // meio
+int Sensor_1 = A0;//Direita
+int Sensor_2 = A1; //Esquerda
+
 
 
 
 float distancia;
-int Led_x = 9;
 
-int refle1 = 0;
-int refle2 = 0;
-int refle3 = 0;
-int refle4 = 0;
+int Valor_Sensor1 = 0;
+int Valor_Sensor2 = 0;
 
 void Ultrasson() {
   distancia = ultrassom.Ranging(CM);// ultrassom.Ranging(CM) retorna a distancia em
@@ -35,74 +35,74 @@ void Ultrasson() {
   delay(100);
 }
 void SensorRefletancia() {
-  refle1 =  analogRead(Sensor_1);
-  Serial.print("refletancia 1:");
-  Serial.println(refle1);
+  Valor_Sensor1 =  analogRead(Sensor_1);
+  Serial.print("refletancia Direita:");
+  Serial.println(Valor_Sensor1);
 
-  refle2 =  analogRead(Sensor_2);
-  Serial.print("refletancia 2:");
-  Serial.println(refle2);
+  Valor_Sensor2 =  analogRead(Sensor_2);
+  Serial.print("refletancia Esquerda:");
+  Serial.println(Valor_Sensor2);
 
-  refle3 =  analogRead(Sensor_3);
-  Serial.print("refletancia 3:");
-  Serial.println(refle3);
-
-  if (refle3 >= fita) {
-    digitalWrite(IN1, HIGH);
-    digitalWrite(IN2, LOW);
-    analogWrite(velocidadeA, 75);
-    digitalWrite(IN3, LOW);
-    digitalWrite(IN4, HIGH);
-    analogWrite(velocidadeB, 75);
-    delay(2000);
-    if (refle3 <= 980) {
-      digitalWrite(IN1, HIGH);
-      digitalWrite(IN2, HIGH);
-      digitalWrite(IN3, HIGH);
-      digitalWrite(IN4, HIGH);
-    }
-  } if (refle3 <= 980) {//Meio
-    digitalWrite(IN1, HIGH);
-    digitalWrite(IN2, HIGH);
-    digitalWrite(IN3, HIGH);
-    digitalWrite(IN4, HIGH);
-
-    
-  } if(refle2 >= fita) {//esquerda
-    digitalWrite(IN1, HIGH);
-    digitalWrite(IN2, LOW);
-    analogWrite(velocidadeA, 50);
-    digitalWrite(IN3, LOW);
-    digitalWrite(IN4, HIGH);
-    analogWrite(velocidadeB, 75);
-    //delay(2000);WHOAMI
-  
-  } if (refle1 >= fita) {//Direita
-    digitalWrite(IN1, HIGH);
-    digitalWrite(IN2, LOW);
-    analogWrite(velocidadeA, 75);
-    digitalWrite(IN3, LOW);
-    digitalWrite(IN4, HIGH);
-    analogWrite(velocidadeB, 50);
-
-
+  if ((Valor_Sensor1 >= fita) && (Valor_Sensor2 >= fita)) {
+    digitalWrite(dir1A, HIGH);
+    digitalWrite(dir2A, LOW);
+    analogWrite(motorA, 150);
+    //ROTAÇÃO
+    digitalWrite(dir1B, LOW);
+    digitalWrite(dir2B, HIGH);
+    analogWrite(motorB, 150);
+    //VELOCIDADE
+    delay(1000);
   }
+  if ((Valor_Sensor1 < fita) && (Valor_Sensor2 > fita)) {
+    digitalWrite(dir1A, HIGH);
+    digitalWrite(dir2A, LOW);
+    analogWrite(motorA, 0);
+    //ROTAÇÃO
+    digitalWrite(dir1B, LOW);
+    digitalWrite(dir2B, HIGH);
+    analogWrite(motorB, 200);
+    //VELOCIDADE
+  }
+  if ((Valor_Sensor1 > fita) && (Valor_Sensor2 < fita)) {
+    digitalWrite(dir1A, HIGH);
+    digitalWrite(dir2A, LOW);
+    analogWrite(motorA, 200);
+    //ROTAÇÃO
+    digitalWrite(dir1B, LOW);
+    digitalWrite(dir2B, HIGH);
+    analogWrite(motorB, 0);
+    //VELOCIDADE
+  }
+
 }
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(1200);
-  pinMode(IN1, OUTPUT);
-  pinMode(IN2, OUTPUT);
-  pinMode(IN3, OUTPUT);
-  pinMode(IN4, OUTPUT);
-  pinMode(velocidadeA, OUTPUT);
-  pinMode(velocidadeB, OUTPUT);
+  pinMode(motorA, OUTPUT);
+  pinMode(motorB, OUTPUT);
+  pinMode(dir1A, OUTPUT);
+  pinMode(dir1B, OUTPUT);
+  pinMode(dir2A, OUTPUT);
+  pinMode(dir2B, OUTPUT);
+
+  if ((Valor_Sensor1 >= fita) && (Valor_Sensor2 >= fita)) {
+    ////
+    digitalWrite(dir1A, HIGH);
+    digitalWrite(dir2A, LOW);
+    //ROTAÇÃO
+    digitalWrite(dir1B, LOW);
+    digitalWrite(dir2B, HIGH);
+    //VELOCIDADE
+    analogWrite(motorA, 150);
+    analogWrite(motorB, 150);
+    delay(1000);
+  }
+
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-
-
 
   SensorRefletancia();
   Ultrasson();
