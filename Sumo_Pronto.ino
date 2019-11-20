@@ -13,7 +13,7 @@ float sensorUltra2;
 int pinoSensor1 = A5;
 int valor1 = 0;//Sensor de Refletancia
 
-int pinoSensor2 = A5;
+int pinoSensor2 = A4;
 int valor2 = 0;//Sensor de Refletancia
 
 void Ultrasonico() {
