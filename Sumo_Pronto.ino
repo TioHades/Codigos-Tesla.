@@ -1,14 +1,18 @@
 #include <Ultrasonic.h>//BIBLIOTECA - ULTRASSONICO.
 #define fita 1000
 
-Ultrasonic ultrassom1(12, 13);
-Ultrasonic ultrassom2(14, 15);
+Ultrasonic ultrassom_a(12, 13);
+Ultrasonic ultrassom_b(14, 15);
 int IN1 = 4;
 int IN2 = 5;
 int IN3 = 6;
 int IN4 = 7;
-float sensorUltra1;
-float sensorUltra2;
+
+long sensorUltra1;
+long sensorUltra2;
+
+//float sensorUltra1;
+//float sensorUltra2;
 
 int pinoSensor1 = A5;
 int valor1 = 0;//Sensor de Refletancia
@@ -17,11 +21,11 @@ int pinoSensor2 = A4;
 int valor2 = 0;//Sensor de Refletancia
 
 void Ultrasonico() {
-  sensorUltra1 = ultrassom1.Ranging(CM);// ultrassom.Ranging(CM) retorna a distancia em
+  sensorUltra1 = ultrassom_a.Ranging(CM);// ultrassom.Ranging(CM) retorna a distancia em
   Serial.print(sensorUltra1); //imprime o valor da variável distancia
   Serial.println(" cm");
 
-  sensorUltra2 = ultrassom2.Ranging(CM);// ultrassom.Ranging(CM) retorna a distancia em
+  sensorUltra2 = ultrassom_b.Ranging(CM);// ultrassom.Ranging(CM) retorna a distancia em
   Serial.print(sensorUltra2); //imprime o valor da variável distancia
   Serial.println(" cm");
 
