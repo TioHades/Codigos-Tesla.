@@ -11,34 +11,6 @@ int IN4 = 7;
 long sensorUltra_a;
 long sensorUltra_b;
 
-//float sensorUltra1;
-//float sensorUltra2;
-
-int pinoSensor1 = A5;
-int valor1 = 0;//Sensor de Refletancia
-
-int pinoSensor2 = A4;
-int valor2 = 0;//Sensor de Refletancia
-
-void SensorRefletancia() {
-
-  valor1 = analogRead(pinoSensor1);
-  int valorCorrigido1 = valor1;
-  Serial.print("refletancia:");
-  Serial.println(valorCorrigido1);
-
-  valor2 = analogRead(pinoSensor2);
-  int valorCorrigido2 = valor2;
-  Serial.print("refletancia:");
-  Serial.println(valorCorrigido2);
-
-  if ((valor1 >= fita) || (valor2 >= fita)) {
-    digitalWrite(IN1, LOW);
-    digitalWrite(IN2, HIGH);
-    digitalWrite(IN3, HIGH);
-    digitalWrite(IN4, LOW);
-  }
-}
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -46,7 +18,6 @@ void setup() {
   pinMode(IN2, OUTPUT);
   pinMode(IN3, OUTPUT);
   pinMode(IN4, OUTPUT);
-
 }
 void loop() {
   // put your main code here, to run repeatedly:
@@ -64,5 +35,4 @@ void loop() {
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, HIGH);
   }
-  SensorRefletancia();
 }
