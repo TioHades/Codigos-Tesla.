@@ -17,7 +17,7 @@ Ultrasonic ultrassom(3, 2);//Varievel do tipo, Ultrassonico.
 float distancia;
 
 void Ultrasson() {
-  distancia = ultrassom.Ranging(CM);// ultrassom.Ranging(CM) retorna a distancia em
+  distancia = ultrassom.read();// ultrassom.Ranging(CM) retorna a distancia em
   // centímetros(CM) ou polegadas(INC)
   Serial.print(distancia); //imprime o valor da variável distancia
   Serial.println("cm");
