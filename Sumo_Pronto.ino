@@ -20,23 +20,6 @@ int valor1 = 0;//Sensor de Refletancia
 int pinoSensor2 = A4;
 int valor2 = 0;//Sensor de Refletancia
 
-void Ultrasonico() {
-  sensorUltra_a = ultrassom_a.Ranging(CM);// ultrassom.Ranging(CM) retorna a distancia em
-  Serial.print(sensorUltra1); //imprime o valor da variável distancia
-  Serial.println(" cm");
-
-  sensorUltra_b = ultrassom_b.Ranging(CM);// ultrassom.Ranging(CM) retorna a distancia em
-  Serial.print(sensorUltra2); //imprime o valor da variável distancia
-  Serial.println(" cm");
-
-  if((sensorUltra_a <= 20) || (sensorUltra_b <= 20)){
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
-  digitalWrite(IN3, LOW);
-  digitalWrite(IN4, HIGH);
-    }
-}
-
 void SensorRefletancia() {
 
   valor1 = analogRead(pinoSensor1);
@@ -49,11 +32,11 @@ void SensorRefletancia() {
   Serial.print("refletancia:");
   Serial.println(valorCorrigido2);
 
-  if((valor1 >= fita) || (valor2 >= fita)){
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, HIGH);
-  digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, LOW);
+  if ((valor1 >= fita) || (valor2 >= fita)) {
+    digitalWrite(IN1, LOW);
+    digitalWrite(IN2, HIGH);
+    digitalWrite(IN3, HIGH);
+    digitalWrite(IN4, LOW);
   }
 }
 void setup() {
@@ -67,7 +50,20 @@ void setup() {
 }
 void loop() {
   // put your main code here, to run repeatedly:
-  Ultrasonico();
-  SensorRefletancia();
+  sensorUltra_a = ultrassom_a.read();// ultrassom.Ranging(CM) retorna a distancia em
+  Serial.print(sensorUltra_a); //imprime o valor da variável distancia
+  Serial.println(" cm");
 
+  sensorUltra_b = ultrassom_b.read();// ultrassom.Ranging(CM) retorna a distancia em
+  Serial.print(sensorUltra_b); //imprime o valor da variável distancia
+  Serial.println(" cm");
+
+  if ((sensorUltra_a <= 20) || (sensorUltra_b <= 20)) {
+    digitalWrite(IN1, HIGH);
+    digitalWrite(IN2, LOW);
+    digitalWrite(IN3, LOW);
+    digitalWrite(IN4, HIGH);
+  }
+  SensorRefletancia();
+}
 }
