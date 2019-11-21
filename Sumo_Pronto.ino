@@ -1,8 +1,8 @@
 #include <Ultrasonic.h>//BIBLIOTECA - ULTRASSONICO.
 #define fita 1000
 
-Ultrasonic ultrassom_a(12, 13);
-Ultrasonic ultrassom_b(14, 15);
+Ultrasonic ultrassom_a(10, 11);
+Ultrasonic ultrassom_b(12, 13);
 int IN1 = 4;
 int IN2 = 5;
 int IN3 = 6;
